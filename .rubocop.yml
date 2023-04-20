@@ -39,3 +39,8 @@ Style/Documentation:
 # URISchemes: http, https
 Layout/LineLength:
   Max: 154
+
+# Offense count: 2
+# Configuration parameters: AllowedMethods, AllowedPatterns, CountRepeatedAttributes.
+Metrics/AbcSize:
+  Max: 33

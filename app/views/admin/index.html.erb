@@ -1,30 +1,28 @@
-<div class="container session-manager-container">
-  <h2 class="session-manager-header">Dashboard#index</h2>
+<div class="container-fluid session-manager-container">
+  <h1 class="session-manager-header">Admins#index</h1>
     
     <div class="row">
         <div class="col-12">
-            <%= link_to "new post", new_post_path, class: "btn btn-primary mb-5" %>
-
-            <table>
+            <table class="table table-dark table-striped">
                 <thead>
                     <tr>
                         <th>投稿者名</th>
                         <th>タイトル</th>
                         <th>本文</th>
+                        <th>操作</th>
                     </tr>
                 </thead>
                 <tbody>
                     <% @posts.each do |post| %>
                         <tr>
-                            <td><%= link_to post.user.full_name, user_path(post.user.id), class: "" %></td>
+                            <td><%= link_to post.user.full_name, user_path(post.user.id), class: "nav-link" %></td>
                             <td><%= link_to post.title, post, class: "nav-link" %></td>
                             <td><%= post.body %></td>
+                            <td><%= button_to '削除', post, :method => :delete, class: "btn btn-danger" %></td>
                         </tr>
                     <% end %>
                 </tbody>
             </table>
-        
         </div>
     </div>
-    
 </div>
