@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   get ':id', to: 'dashboard#show', as: :user
   # Defines the root path route ("/")
   # root "articles#index"
+
 end
