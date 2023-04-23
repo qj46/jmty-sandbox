@@ -10,6 +10,9 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_one_attached :avatar
 
+  has_many :entries, dependent: :destroy
+  has_many :messages, dependent: :destroy
+
   friendly_id :username, use: %i[slugged]
 
   validates :full_name, length: { maximum: 50 }

@@ -16,7 +16,7 @@
                 <tbody>
                     <% @posts.each do |post| %>
                         <tr>
-                            <td><%= link_to post.user.full_name, user_path(post.user.id), class: "" %></td>
+                            <td><%= link_to post.user.id, user_path(post.user.id), class: "" %></td>
                             <td><%= link_to post.title, post, class: "nav-link" %></td>
                             <td><%= post.body %></td>
                         </tr>

@@ -15,7 +15,29 @@
                         <p><%= @user.body %></p>
                     </div>
                     <div class="col-12 d-flex justify-content-center">
-                        <p><%= mail_to @user.email, '連絡先' %></p>
+                        
+                        <div class="p-3">
+                            <%= mail_to @user.email, '連絡先' %>
+                        </div>
+                        
+                        <!-- DM -->
+                        <div class="p-3">
+                            <% unless @user.id == current_user.id %>
+                                <% if @is_room == true %>
+                                <!-- 新規 -->
+                                    <%= link_to 'メッセージへ', room_path(@room_id) %>
+                                <% else %>
+                                <!-- 過去 -->
+                                    <%= form_for @room do |f| %>
+                                    <%= fields_for @entry do |e| %>
+                                        <%= e.hidden_field :user_id, value: @user.id %>
+                                    <% end %>
+                                    <%= f.button type: :submit %>
+                                    <% end %>
+                                <% end %>
+                            <% end %>
+                        </div>
+
                     </div>
                     
                     <table class="table">
@@ -34,3 +56,5 @@
         </div>
     </div>
 </div>
+
+

@@ -3,7 +3,7 @@
 Rails.application.routes.draw do
   get 'admin/index'
 
-  resources :posts, only: %i[create new]
+  resources :posts, only: [:create, :new]
 
   devise_for :users, controllers: {
     sessions: 'users/sessions',
@@ -16,4 +16,7 @@ Rails.application.routes.draw do
   get ':id', to: 'dashboard#show', as: :user
   get 'posts/:id', to: 'posts#show', as: :post
   delete 'posts/:id', to: 'posts#destroy'
+
+  resources :messages, only: [:create]
+  resources :rooms, only: [:create, :index, :show]
 end
