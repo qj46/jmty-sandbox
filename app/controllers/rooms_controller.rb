@@ -18,7 +18,7 @@ class RoomsController < ApplicationController
 
   def show
     @should_render_navbar = true
-    
+
     # ログインユーザーがエントリーしてないルームは入れない
     @user = Room.find_by(id: params[:id]).entries.find_by(user_id: current_user.id)
     redirect_to dashboard_path if @user.nil?

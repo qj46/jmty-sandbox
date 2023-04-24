@@ -23,12 +23,10 @@
                             <% if current_user %>
                             <td>
                                 <% if current_user.likes.exists?(post_id: post.id) %>
-                                  <%= link_to post_likes_path(post), method: :delete do %>
-                                    <i class="fas fa-heart"></i>
-                                  <% end %>
+                                  <i class="fas fa-bookmark"></i>
                                 <% else %>
                                   <%= link_to post_likes_path(post), method: :post do %>
-                                    <i class="far fa-heart"></i>
+                                    <i class="far fa-bookmark"></i>
                                   <% end %>
                                 <% end %>
                             </td>
