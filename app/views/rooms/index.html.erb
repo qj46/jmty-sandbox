@@ -1,0 +1,23 @@
+<div class="container session-manager-container">
+  <h2 class="session-manager-header">Dashboard#index</h2>
+    <div class="row">
+        <div class="col-12">
+            <table>
+                <thead>
+                    <tr>
+                        <th>投稿者名</th>
+                        <th>タイトル</th>
+                        <th>本文</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @rooms.each do |room| %>
+                        <tr>
+                            <td><%= link_to room.id, room_path(room.id), class: "" %></td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -4,12 +4,16 @@ Rails.application.routes.draw do
   get 'admin/index'
   get 'lists', to: 'lists#index'
 
+  resources :rooms, only: %i[create index show]
+  resources :messages, only: [:create]
+
   # resources :posts, only: [:create, :new]
 
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
+
 
   root 'dashboard#index'
   get 'dashboard', to: 'dashboard#index'
@@ -19,7 +23,4 @@ Rails.application.routes.draw do
   resources :posts do
     resource :likes
   end
-
-  resources :messages, only: [:create]
-  resources :rooms, only: %i[create index show]
 end

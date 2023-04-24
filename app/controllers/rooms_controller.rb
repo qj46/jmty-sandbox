@@ -2,6 +2,13 @@
 
 class RoomsController < ApplicationController
   before_action :authenticate_user!
+
+  def index
+    @should_render_navbar = true
+
+    @rooms = current_user.entries.map(&:room)
+  end
+
   def create
     room = Room.create
     current_entry = Entry.create(user_id: current_user.id, room_id: room.id)
@@ -10,6 +17,8 @@ class RoomsController < ApplicationController
   end
 
   def show
+    @should_render_navbar = true
+    
     # ログインユーザーがエントリーしてないルームは入れない
     @user = Room.find_by(id: params[:id]).entries.find_by(user_id: current_user.id)
     redirect_to dashboard_path if @user.nil?
