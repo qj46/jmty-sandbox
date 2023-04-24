@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RoomsController < ApplicationController
   before_action :authenticate_user!
   def create
@@ -9,10 +11,10 @@ class RoomsController < ApplicationController
 
   def show
     # ログインユーザーがエントリーしてないルームは入れない
-    @user = Room.find_by_id(params[:id]).entries.find_by(user_id: current_user.id)
+    @user = Room.find_by(id: params[:id]).entries.find_by(user_id: current_user.id)
     redirect_to dashboard_path if @user.nil?
 
-    
+
     @room = Room.find(params[:id])
     @messages = @room.messages.all
     @message = Message.new

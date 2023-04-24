@@ -1,0 +1,25 @@
+<div class="container session-manager-container">
+  <h2 class="session-manager-header">Dashboard#index</h2>
+    <div class="row">
+        <div class="col-12">
+            <table>
+                <thead>
+                    <tr>
+                        <th>投稿者名</th>
+                        <th>タイトル</th>
+                        <th>本文</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @lists.each do |list| %>
+                        <tr>
+                            <td><%= link_to list.post.user.id, user_path(list.post.user.id), class: "" %></td>
+                            <td><%= link_to list.post.title, list.post, class: "nav-link" %></td>
+                            <td><%= list.post.body %></td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

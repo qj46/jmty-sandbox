@@ -44,3 +44,13 @@ Layout/LineLength:
 # Configuration parameters: AllowedMethods, AllowedPatterns, CountRepeatedAttributes.
 Metrics/AbcSize:
   Max: 33
+
+# Offense count: 2
+Lint/UselessAssignment:
+  Exclude:
+    - 'app/controllers/rooms_controller.rb'
+
+# Offense count: 1
+# Configuration parameters: AllowedMethods, AllowedPatterns.
+Metrics/CyclomaticComplexity:
+  Max: 8

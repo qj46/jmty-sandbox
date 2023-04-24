@@ -19,6 +19,20 @@
                             <td><%= link_to post.user.id, user_path(post.user.id), class: "" %></td>
                             <td><%= link_to post.title, post, class: "nav-link" %></td>
                             <td><%= post.body %></td>
+
+                            <% if current_user %>
+                            <td>
+                                <% if current_user.likes.exists?(post_id: post.id) %>
+                                  <%= link_to post_likes_path(post), method: :delete do %>
+                                    <i class="fas fa-heart"></i>
+                                  <% end %>
+                                <% else %>
+                                  <%= link_to post_likes_path(post), method: :post do %>
+                                    <i class="far fa-heart"></i>
+                                  <% end %>
+                                <% end %>
+                            </td>
+                            <% end %>
                         </tr>
                     <% end %>
                 </tbody>
