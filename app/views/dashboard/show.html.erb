@@ -5,8 +5,7 @@
             <div class="col-12 mt-5">
                 <div class="row">
                     <div class="col-12 d-flex justify-content-center">
-                        <img src="/img.png" class="avatar-image" style="">
-                        <% image_tag(@user.avatar, class:"avatar-image") if @user.avatar.attached? %>
+                        <%= image_tag(@user.avatar, class:"avatar-image") if @user.avatar.attached? %>
                     </div>
                     <div class="col-12 d-flex justify-content-center">
                         <h2><%= @user.full_name %></h2>
