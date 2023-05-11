@@ -2,12 +2,11 @@
 
 FactoryBot.define do
   factory :user do
-    id { 1 }
-    email { Faker::Internet.free_email }
-    password { 'qwerty' }
-    username { Faker::Internet.username }
+    email { 'test@example.com' }
+    password { 'password' }
+    username { 'test' }
     full_name { 'hoge' }
-    body { Faker::Lorem.paragraph }
-    slug { Faker::Internet.slug }
+    body { 'MyString' }
+    slug { 'foo' }
   end
 end

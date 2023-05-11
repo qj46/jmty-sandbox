@@ -15,7 +15,7 @@
 
   <body>
     <%= render partial: "layouts/navbar" if @should_render_navbar %>
-    <%= render partial: "layouts/alerts" if flash[:notice].present? %>
+    <%= render partial: "layouts/alerts" %>
 
     <%= yield %>
 
