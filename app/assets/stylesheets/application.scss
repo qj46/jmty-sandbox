@@ -1,0 +1,30 @@
+// Sassy
+.avatar-image {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+}
+
+.no-padding-col {
+    padding: 0 !important;
+}
+
+.navbar {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+
+    ul {
+        background: #eee;
+    }
+
+    &__expandLg {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+    }
+}
+
