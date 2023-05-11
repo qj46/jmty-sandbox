@@ -15,6 +15,10 @@
                     </div>
                     <div class="col-12 d-flex justify-content-center">
                         
+                        <div class="p-3">
+                            <%= link_to "Twitter", "https://twitter.com/" + @user.username %>
+                        </div>
+
                         <!-- DM -->
                         <% if current_user %>
                         <div class="p-3">
@@ -41,8 +45,9 @@
                       <tbody>
                         <% @user.posts.each do |post| %>
                         <tr>
-                            <td><%= post.created_at %></td>
+                            <td><%= format_date post.created_at %></td>
                             <td><%= link_to post.title, post, class: "nav-link" %></td>
+                            <td><%= link_to post.body, post, class: "nav-link" %></td>
                         </tr>
                         <% end %>
                       </tbody>

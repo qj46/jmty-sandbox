@@ -11,20 +11,20 @@ RSpec.describe 'Users', type: :system do
     context 'ログインに成功した場合' do
       it 'ログインできたことを知らせる' do
         visit new_user_session_path
-        fill_in 'Email', with: 'test@example.com'
-        fill_in 'Password', with: 'password'
+        fill_in 'メール', with: 'test@example.com'
+        fill_in 'パスワード', with: 'password'
         click_button 'Log in'
-        expect(page).to have_content 'Signed in successfully.'
+        expect(page).to have_content 'ログインしました。'
       end
     end
 
     context 'ログインに失敗した場合' do
       it 'ログイン情報に誤りがあることを知らせる' do
         visit new_user_session_path
-        fill_in 'Email', with: 'test@example.com'
-        fill_in 'Password', with: 'invalid_password'
+        fill_in 'メール', with: 'test@example.com'
+        fill_in 'パスワード', with: 'invalid_password'
         click_button 'Log in'
-        expect(page).to have_content 'Invalid Email or password.'
+        expect(page).to have_content 'メール もしくはパスワードが不正です。'
       end
     end
   end
@@ -33,10 +33,10 @@ RSpec.describe 'Users', type: :system do
     context '新規登録に成功した場合' do
       it '新規登録成功後の遷移先が正しい' do
         visit new_user_registration_path
-        fill_in 'Username', with: 'test'
-        fill_in 'Email', with: 'test@example.com'
-        fill_in 'Password', with: 'password', match: :first
-        fill_in 'Password confirmation', with: 'password', match: :first
+        fill_in '名前', with: 'test'
+        fill_in 'メール', with: 'test@example.com'
+        fill_in 'パスワード', with: 'password', match: :first
+        fill_in '確認用パスワード', with: 'password', match: :first
         click_button 'Sign up'
         expect(page).to have_current_path root_path
       end
@@ -45,10 +45,10 @@ RSpec.describe 'Users', type: :system do
     context '新規登録に失敗した場合' do
       it '新規登録失敗後の遷移先が正しい' do
         visit new_user_registration_path
-        fill_in 'Username', with: 'test'
-        fill_in 'Email', with: 'test@example.com'
-        fill_in 'Password', with: 'password', match: :first
-        fill_in 'Password confirmation', with: 'password2', match: :first
+        fill_in '名前', with: 'test'
+        fill_in 'メール', with: 'test@example.com'
+        fill_in 'パスワード', with: 'password', match: :first
+        fill_in '確認用パスワード', with: 'password2', match: :first
         click_button 'Sign up'
         expect(page).to have_current_path '/users'
       end
