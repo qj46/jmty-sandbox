@@ -5,13 +5,13 @@
             <table>
                 <thead>
                     <tr>
-                        <th>タイトル</th>
+                        <th>room</th>
                     </tr>
                 </thead>
                 <tbody>
                     <% @rooms.each do |room| %>
                         <tr>
-                            <td><%= link_to room.id, room_path(room.id), class: "" %></td>
+                            <td>No. <%= link_to room.id, room_path(room.id), class: "" %></td>
                         </tr>
                     <% end %>
                 </tbody>
