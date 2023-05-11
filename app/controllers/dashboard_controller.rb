@@ -36,6 +36,7 @@ class DashboardController < ApplicationController
     end
 
     return if @is_room
+
     @room = Room.new
     @entry = Entry.new
   end
