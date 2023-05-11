@@ -6,7 +6,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
-      redirect_to new_post_path
+      redirect_to root_path
     else
       render :new
     end

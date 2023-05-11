@@ -7,7 +7,7 @@ class DashboardController < ApplicationController
   def index
     @should_render_navbar = true
 
-    @posts = Post.all
+    @posts = Post.all.order(created_at: :desc)
   end
 
   def appearance
