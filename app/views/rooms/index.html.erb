@@ -14,7 +14,7 @@
                     <% @rooms.each do |room| %>
                         <tr>
                             <td><%= format_date room.created_at %></td>
-                            <td><%= link_to room.user.username, room_path(room.id), class: "" %></td>
+                            <td><%= link_to room.id, room_path(room.id), class: "" %></td>
                         </tr>
                     <% end %>
                 </tbody>
