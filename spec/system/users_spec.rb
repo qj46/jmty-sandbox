@@ -14,6 +14,7 @@ RSpec.describe 'Users', type: :system do
         fill_in 'メール', with: 'test@example.com'
         fill_in 'パスワード', with: 'password'
         click_button 'Log in'
+        expect(page).to have_current_path root_path
         expect(page).to have_content 'ログインしました。'
         expect(page).to have_content 'test'
       end
@@ -25,6 +26,7 @@ RSpec.describe 'Users', type: :system do
         fill_in 'メール', with: 'test@example.com'
         fill_in 'パスワード', with: 'invalid_password'
         click_button 'Log in'
+        expect(page).to have_current_path new_user_session_path
         expect(page).to have_content 'メール もしくはパスワードが不正です。'
       end
     end
