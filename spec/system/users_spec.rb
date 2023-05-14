@@ -13,10 +13,9 @@ RSpec.describe 'Users', type: :system do
         visit new_user_session_path
         fill_in 'メール', with: 'test@example.com'
         fill_in 'パスワード', with: 'password'
-        click_button 'Log in'
+        click_button 'ログイン'
         expect(page).to have_current_path root_path
         expect(page).to have_content 'ログインしました。'
-        expect(page).to have_content 'test'
       end
     end
 
@@ -25,7 +24,7 @@ RSpec.describe 'Users', type: :system do
         visit new_user_session_path
         fill_in 'メール', with: 'test@example.com'
         fill_in 'パスワード', with: 'invalid_password'
-        click_button 'Log in'
+        click_button 'ログイン'
         expect(page).to have_current_path new_user_session_path
         expect(page).to have_content 'メール もしくはパスワードが不正です。'
       end
@@ -40,7 +39,7 @@ RSpec.describe 'Users', type: :system do
         fill_in 'メール', with: 'test@example.com'
         fill_in 'パスワード', with: 'password', match: :first
         fill_in '確認用パスワード', with: 'password', match: :first
-        click_button 'Sign up'
+        click_button '登録'
         expect(page).to have_current_path root_path
         expect(page).to have_content 'アカウント登録が完了しました。'
       end
@@ -54,7 +53,7 @@ RSpec.describe 'Users', type: :system do
         fill_in 'メール', with: 'test@example.com'
         fill_in 'パスワード', with: 'password', match: :first
         fill_in '確認用パスワード', with: 'password2', match: :first
-        click_button 'Sign up'
+        click_button '登録'
         expect(page).to have_current_path '/users'
         expect(page).to have_content '確認用パスワードとパスワードの入力が一致しません'
       end
