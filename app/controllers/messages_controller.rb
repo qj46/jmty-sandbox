@@ -7,7 +7,7 @@ class MessagesController < ApplicationController
     message = Message.new(message_params)
     message.user_id = current_user.id
     if message.save
-      redirect_to room_path(message.room)
+      redirect_to room_path(message.room), notice: 'メッセージを送信しました'
     else
       redirect_back(fallback_location: root_path)
     end
