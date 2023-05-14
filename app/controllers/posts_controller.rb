@@ -8,7 +8,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to root_path, notice: '投稿しました'
     else
-      render :new
+      redirect_to new_post_path, alert: '投稿に失敗しました'
     end
   end
 
@@ -25,10 +25,9 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
+    @post = Post.find_by(id: params[:id])
     @post.destroy
-
-    redirect_to admins_index_path
+    redirect_to request.referer, notice: '投稿を削除しました'
   end
 
   private
