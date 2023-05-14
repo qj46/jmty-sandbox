@@ -1,61 +1,56 @@
-<div class="profile">
-    <div class="container">
-        <div class="row">
-    
-            <div class="col-12 mt-5">
-                <div class="row">
-                    <div class="col-12 d-flex justify-content-center">
-                        <%= image_tag(@user.avatar, class:"avatar-image") if @user.avatar.attached? %>
-                    </div>
-                    <div class="col-12 d-flex justify-content-center">
-                        <h2><%= @user.full_name %></h2>
-                    </div>
-                    <div class="col-12 d-flex justify-content-center">
-                        <p><%= @user.body %></p>
-                    </div>
-                    <div class="col-12 d-flex justify-content-center">
-                        
-                        <div class="p-3">
-                            <%= link_to "Twitter", "https://twitter.com/" + @user.username %>
-                        </div>
-
-                        <!-- DM -->
-                        <% if current_user %>
-                        <div class="p-3">
-                            <% unless @user.id == current_user.id %>
-                                <% if @is_room == true %>
-                                <!-- 新規 -->
-                                    <%= link_to 'メッセージへ', room_path(@room_id) %>
-                                <% else %>
-                                <!-- 過去 -->
-                                    <%= form_for @room do |f| %>
-                                    <%= fields_for @entry do |e| %>
-                                        <%= e.hidden_field :user_id, value: @user.id %>
-                                    <% end %>
-                                    <%= f.button type: :submit %>
-                                    <% end %>
-                                <% end %>
-                            <% end %>
-                        </div>
-                        <% end %>
-
-                    </div>
-                    
-                    <table class="table">
-                      <tbody>
-                        <% @user.posts.each do |post| %>
-                        <tr>
-                            <td><%= format_date post.created_at %></td>
-                            <td><%= link_to post.title, post, class: "nav-link" %></td>
-                            <td><%= link_to post.body, post, class: "nav-link" %></td>
-                        </tr>
-                        <% end %>
-                      </tbody>
-                    </table>
-                </div>
-            </div>
-    
+<div class="profile l-inner">
+    <div class="profile__contents">
+        
+        <div class="profile__content">
+            <% if @user.avatar.attached? %>
+                <%= image_tag(@user.avatar, class:"avatar") %>
+            <% else %>
+                <img class="avatar" src="https://placehold.jp/100x100.png" alt="">
+            <% end %>
         </div>
+        <div class="profile__content">
+            <h2><%= truncate_text(@user.full_name, 80) if @user.full_name %></h2>
+        </div>
+        <div class="profile__content">
+            <p><%= truncate_text(@user.body, 80) if @user.body %></p>
+        </div>
+        <div class="profile__content flex">
+        <!-- twitter -->    
+            <div class="profile__contentItem">
+                <%= link_to "Twitter", "https://twitter.com/" + @user.username %>
+            </div>
+        <!-- DM -->
+        <% if current_user %>
+            <div class="profile__contentItem">
+                <% unless @user.id == current_user.id %>
+                    <% if @is_room == true %>
+                    <!-- 新規 -->
+                        <%= link_to 'DM', room_path(@room_id) %>
+                    <% else %>
+                    <!-- 過去 -->
+                        <%= form_for @room do |f| %>
+                            <%= fields_for @entry do |e| %>
+                                <%= e.hidden_field :user_id, value: @user.id %>
+                            <% end %>
+                        <%= f.button type: :submit %>
+                        <% end %>
+                    <% end %>
+                <% end %>
+            </div>
+        <% end %>
+        </div>
+        
+        <table>
+            <tbody>
+            <% @user.posts.each do |post| %>
+            <tr>
+                <td><%= format_date post.created_at %></td>
+                <td><%= link_to truncate_text(post.title, 80), post, class: "" if post.title %></td>
+            </tr>
+            <% end %>
+            </tbody>
+        </table>
+    
     </div>
 </div>
 

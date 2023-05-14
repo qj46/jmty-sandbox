@@ -1,7 +1,12 @@
-<div class="container session-manager-container">
-  <h1 class="session-manager-header">Posts#show</h1>
-
-    <h2><%= @post.title %></h2>
-    <p><%= @post.body %></p>
-
+<div class="posts l-inner">
+  <% if @post.user.avatar.attached? %>
+      <%= image_tag(@post.user.avatar, class:"avatar") %>
+      <%= @post.user.username %>
+  <% else %>
+      <img class="avatar" src="https://placehold.jp/100x100.png" alt="">
+  <% end %>
+  <br><br>
+  <h1><%= @post.title %></h1>
+  <br>
+  <p><%= @post.body %></p>
 </div>

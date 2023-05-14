@@ -1,44 +1,41 @@
-<div class="container session-manager-container">
-  <h2 class="session-manager-header">Dashboard#index</h2>
-    
-    <div class="row">
-        <div class="col-12">
-            <%= link_to "new post", new_post_path, class: "btn btn-primary mb-5" %>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>日付</th>
-                        <th>投稿者</th>
-                        <th>タイトル</th>
-                        <th>本文</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% @posts.each do |post| %>
-                        <tr>
-                            <td><%= format_date post.created_at %></td>
-                            <td><%= link_to post.user.username, user_path(post.user.id), class: "" %></td>
-                            <td><%= link_to post.title, post, class: "nav-link" %></td>
-                            <td><%= post.body %></td>
-
-                            <% if current_user %>
-                            <td>
-                                <% if current_user.likes.exists?(post_id: post.id) %>
-                                  <i class="fas fa-bookmark"></i>
-                                <% else %>
-                                  <%= link_to post_likes_path(post), method: :post do %>
-                                    <i class="far fa-bookmark"></i>
-                                  <% end %>
-                                <% end %>
-                            </td>
-                            <% end %>
-                        </tr>
-                    <% end %>
-                </tbody>
-            </table>
-        
-        </div>
+<div class="top l-inner">
+    <div>
+        <img src="https://placehold.jp/1100x200.png" alt="">
     </div>
-    
+
+    <div class="top__contents">
+        <table>
+            <tbody>
+                <% @posts.each do |post| %>
+                    <tr>
+                        <td>
+                            <% if post.user.avatar.attached? %>
+                                <%= image_tag(post.user.avatar, class:"avatar") %>
+                            <% else %>
+                                <img class="avatar" src="https://placehold.jp/100x100.png" alt="">
+                            <% end %>
+                        </td>
+                        <!-- <td><%= link_to post.user.username, user_path(post.user.id), class: "" %></td> -->
+                        <td>
+                            <%= link_to truncate_text(post.title, 80), post, class: "nav-link" %>
+                            <%= link_to truncate_text(post.body, 80), post, class: "nav-link" %>
+                        </td>
+                        <td><%= format_date post.created_at %></td>
+                        <% if current_user %>
+                        <td>
+                            <% if current_user.likes.exists?(post_id: post.id) %>
+                                <i class="fas fa-heart"></i>
+                            <% else %>
+                                <%= link_to post_likes_path(post), method: :post do %>
+                                    <i class="far fa-heart"></i>
+                                <% end %>
+                            <% end %>
+                        </td>
+                        <% end %>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+
 </div>

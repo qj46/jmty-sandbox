@@ -1,0 +1,137 @@
+@charset "utf-8";
+
+//pc
+@mixin pc(){
+    @media (min-width: 767px) {
+        @content;
+    }
+}
+
+// sp
+@mixin sp(){
+    @media (max-width: 767px) {
+        @content;
+    }
+}
+
+// ipad
+@mixin ipad(){
+    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+        @content;
+    }
+}
+
+.lists {
+    &__contents {
+        @include sp{
+            overflow-x: scroll;
+        }
+    }
+
+    th:first-child, td:first-child{
+        width: 15%;
+        text-align: left;
+    }
+    td:nth-child(2){
+        width: 60%;
+        text-align: left;
+    }
+    td:nth-child(3){
+        width: 25%;
+        text-align: left;
+    }
+}
+
+.rooms {
+    &__contents {
+        @include sp{
+            overflow-x: scroll;
+        }
+    }
+
+    th:first-child, td:first-child{
+        width: 15%;
+        text-align: center;
+        @include sp{
+            width: initial !important;
+        }
+    }
+    td:nth-child(2){
+        width: 60%;
+        text-align: center;
+        @include sp{
+            width: initial !important;
+        }
+    }
+    td:nth-child(3){
+        width: 25%;
+        text-align: left;
+        @include sp{
+            width: initial !important;
+        }
+    }
+}
+
+.admin {
+    &__contents {
+        @include sp{
+            overflow-x: scroll;
+        }
+    }
+
+    table {
+        background: #000;
+        color: #fff;
+        padding: 10px;
+    }
+    th, td{
+        width: initial;
+        text-align: center;
+    }
+    a {
+        color: #fff !important;
+    }
+}
+
+.profile, .posts {
+    &__contents {
+        @include sp{
+            overflow-x: scroll;
+        }
+    }
+
+    @include sp{
+        margin-top: 15vw;
+    }
+    &__content {
+        padding: 3px 0;
+    }
+    &__contentItem {
+        margin: 0 15px 0 0;
+    }
+    .flex {
+        display: flex;
+    }
+
+    th:first-child, td:first-child{
+        width: 15%;
+        text-align: left;
+        @include sp{
+            width: 45%;
+        }
+    }
+    td:nth-child(2){
+        width: 60%;
+        text-align: left;
+        @include sp{
+            width: initial !important;
+        }
+    }
+    td:nth-child(3){
+        width: 25%;
+        text-align: left;
+        @include sp{
+            width: initial !important;
+        }
+    }
+}

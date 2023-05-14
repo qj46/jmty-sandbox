@@ -1,35 +1,40 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <%= link_to "TOP", dashboard_path, class: "navbar-brand" %>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
-      <% if user_signed_in? %>
-      <ul class="navbar-nav">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <%= current_user.username %>
-          </a>
-          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-            <li><%= link_to "my account", edit_user_registration_path, class: "dropdown-item" %></li>
-            <li><%= link_to "appearance", appearance_path, class: "dropdown-item" %></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><%= link_to "bookmarks", lists_path, class: "dropdown-item" %></li>
-            <li><%= link_to "rooms", rooms_path, class: "dropdown-item" %></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><%= link_to "Log out", destroy_user_session_path, :method => :delete, class: "dropdown-item" %></li>
-          </ul>
-        </li>
-      </ul>
-      <% else %>
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <%= link_to "Log in", new_user_session_path, class: "dropdown-item" %>
-        </li>
-      </ul>
-      <% end %>
+<header class="header">
+    <div class="header__inner">
+        <div class="header__logo">
+            <%= link_to "TOP", dashboard_path, class: "" %>
+        </div>
+        <div class="header__left">
+            <ul class="header__headNav headNav">
+              <% if user_signed_in? %>
+                <li class="headNav__item"><%= link_to "新しい投稿", new_post_path, class: "" %></li>
+                <li class="headNav__item"><%= link_to "マイアカウント", edit_user_registration_path, class: "" %></li>
+                <li class="headNav__item"><%= link_to "外観", appearance_path, class: "" %></li>
+                <li class="headNav__item"><%= link_to "いいね一覧", lists_path, class: "" %></li>
+                <li class="headNav__item"><%= link_to "チャット", rooms_path, class: "" %></li>
+                <li class="headNav__item"><%= link_to "ログアウト", destroy_user_session_path, :method => :delete, class: "btn btn-danger" %></li>
+              <% else %>
+                <li class="headNav__item"><%= link_to "ログイン", new_user_session_path, class: "btn btn-primary" %></li>
+              <% end %>
+            </ul>
+        </div>
+        <button class="header__ham ham" id="js-ham">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </div>
-  </div>
-</nav>
+    <nav class="header__nav nav" id="js-nav">
+        <ul class="nav__items navItems">
+          <% if user_signed_in? %>
+            <li class="headNav__item"><%= link_to "新しい投稿", new_post_path, class: "" %></li>
+            <li class="headNav__item"><%= link_to "マイアカウント", edit_user_registration_path, class: "" %></li>
+            <li class="headNav__item"><%= link_to "外観", appearance_path, class: "" %></li>
+            <li class="headNav__item"><%= link_to "いいね一覧", lists_path, class: "" %></li>
+            <li class="headNav__item"><%= link_to "チャット", rooms_path, class: "" %></li>
+            <li class="headNav__item"><%= link_to "ログアウト", destroy_user_session_path, :method => :delete, class: "" %></li>
+          <% else %>
+            <li class="headNav__item"><%= link_to "ログイン", new_user_session_path, class: "" %></li>
+          <% end %>
+        </ul>
+    </nav>
+</header>

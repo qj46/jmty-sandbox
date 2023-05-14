@@ -1,26 +1,24 @@
-<div class="container session-manager-container">
-    <h2 class="session-manager-header">Dashboard#index</h2>
+<div class="lists l-inner">
+    <h2 class="session-manager-header">いいね一覧</h2>
     
-    <div class="row">
-        <div class="col-12">
-            <table>
-                <thead>
+    <div class="lists__contents">
+        <table>
+            <thead>
+                <tr>
+                    <th>投稿者名</th>
+                    <th>タイトル</th>
+                    <th>本文</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @lists.each do |list| %>
                     <tr>
-                        <th>投稿者名</th>
-                        <th>タイトル</th>
-                        <th>本文</th>
+                        <td><%= link_to list.post.user.username, user_path(list.post.user.id), class: "" %></td>
+                        <td><%= link_to truncate_text(list.post.title, 40), list.post, class: "nav-link" %></td>
+                        <td><%= truncate_text(list.post.body, 40) %></td>
                     </tr>
-                </thead>
-                <tbody>
-                    <% @lists.each do |list| %>
-                        <tr>
-                            <td><%= link_to list.post.user.username, user_path(list.post.user.id), class: "" %></td>
-                            <td><%= link_to list.post.title, list.post, class: "nav-link" %></td>
-                            <td><%= list.post.body %></td>
-                        </tr>
-                    <% end %>
-                </tbody>
-            </table>
-        </div>
+                <% end %>
+            </tbody>
+        </table>
     </div>
 </div>

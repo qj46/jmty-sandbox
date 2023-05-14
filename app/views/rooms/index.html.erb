@@ -1,24 +1,23 @@
-<div class="container session-manager-container">
-    <h2 class="session-manager-header">Dashboard#index</h2>
+<div class="rooms l-inner">
+    <h2 class="session-manager-header">チャット</h2>
     
-    <div class="row">
-        <div class="col-12">
-            <table>
-                <thead>
+    <div class="rooms__contents">
+        <table>
+            <thead>
+                <tr>
+                    <th>日付</th>
+                    <th>チャットルーム No</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @rooms.each do |room| %>
                     <tr>
-                        <th>日付</th>
-                        <th>チャットルーム No</th>
+                        <td><%= format_date room.created_at %></td>
+                        <td><%= link_to room.id, room_path(room.id), class: "" %></td>
                     </tr>
-                </thead>
-                <tbody>
-                    <% @rooms.each do |room| %>
-                        <tr>
-                            <td><%= format_date room.created_at %></td>
-                            <td><%= link_to room.id, room_path(room.id), class: "" %></td>
-                        </tr>
-                    <% end %>
-                </tbody>
-            </table>
-        </div>
+                <% end %>
+            </tbody>
+        </table>
     </div>
+    
 </div>

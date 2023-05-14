@@ -1,29 +1,28 @@
-<div class="container-fluid session-manager-container">
-    <h1 class="session-manager-header">Admins#index</h1>
-    <div class="row">
-        <div class="col-12">
-            <table class="table table-dark table-striped">
-                <thead>
+<div class="admin l-inner">
+    <h1 class="session-manager-header">管理画面</h1>
+    
+    <div class="admin__contents">
+        <table class="table table-dark table-striped">
+            <thead>
+                <tr>
+                    <th>日付</th>
+                    <th>投稿者</th>
+                    <th>タイトル</th>
+                    <th>本文</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @posts.each do |post| %>
                     <tr>
-                        <th>日付</th>
-                        <th>投稿者</th>
-                        <th>タイトル</th>
-                        <th>本文</th>
-                        <th>操作</th>
+                        <td><%= format_date post.created_at %></td>
+                        <td><%= link_to post.user.username, user_path(post.user.id), class: "nav-link" %></td>
+                        <td><%= link_to truncate_text(post.title, 30), post, class: "nav-link" %></td>
+                        <td><%= truncate_text(post.body, 30) %></td>
+                        <td><%= button_to '削除', post, :method => :delete, class: "btn btn-danger" %></td>
                     </tr>
-                </thead>
-                <tbody>
-                    <% @posts.each do |post| %>
-                        <tr>
-                            <td><%= format_date post.created_at %></td>
-                            <td><%= link_to post.user.username, user_path(post.user.id), class: "nav-link" %></td>
-                            <td><%= link_to post.title, post, class: "nav-link" %></td>
-                            <td><%= post.body %></td>
-                            <td><%= button_to '削除', post, :method => :delete, class: "btn btn-danger" %></td>
-                        </tr>
-                    <% end %>
-                </tbody>
-            </table>
-        </div>
+                <% end %>
+            </tbody>
+        </table>
     </div>
 </div>

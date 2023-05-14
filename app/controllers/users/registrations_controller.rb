@@ -16,9 +16,10 @@ module Users
     # end
 
     # GET /resource/edit
-    # def edit
-    #   super
-    # end
+    def edit
+      # super
+      @should_render_navbar = true
+    end
 
     # PUT /resource
     def update

@@ -1,4 +1,5 @@
-<h2>Change your password</h2>
+<div class="l-inner session-manager-container">
+  <h2 class="session-manager-header">パスワードを変更してください</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
@@ -20,8 +21,9 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Change my password" %>
+    <%= f.button :submit, "パスワードを変更します" %>
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<% render "devise/shared/links" %>
+</div>
