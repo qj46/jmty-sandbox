@@ -1,0 +1,106 @@
+@charset "utf-8";
+
+//pc
+@mixin pc(){
+    @media (min-width: 767px) {
+        @content;
+    }
+}
+
+// sp
+@mixin sp(){
+    @media (max-width: 767px) {
+        @content;
+    }
+}
+
+// ipad
+@mixin ipad(){
+    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+        @content;
+    }
+}
+
+//全ページ共通クラス
+
+.pc-display{
+    @include sp(){
+        display: none;
+    }
+}
+
+.sp-display{
+    @include pc(){
+        display: none;
+    }
+}
+
+.l-wrap{
+    @include sp(){
+        padding-top: 63px;
+    }
+}
+
+.l-inner {
+    width: 1100px;
+    margin: 0 auto;
+    padding: 0 40px;
+
+    @include sp() {
+        width: unset;
+        padding: 0 15px;
+    }
+}
+
+.breadcrumbs{
+    display: flex;
+    align-items: center;
+    padding-top: 15px;
+    
+
+    & > span{
+        margin: 0 7px;
+        font-size: 12px;
+        position: relative;
+        top: 2px;
+
+        @include sp(){
+            top: 1px;
+        }
+
+        &:first-child{
+            margin-left: 0;
+        }
+    }
+
+    .post{
+        color: #333;
+    }
+
+    a{
+        color: #777;
+        font-size: 12px;
+    }
+}
+
+.heading {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: #a1a1a1;
+
+    h1{
+        text-shadow: 0px 1px 5px #a1a1a1;
+        color: #fff;
+        text-align: center;
+        padding: 100px 0;
+        font-size: 20px;
+        @include sp(){
+            padding: 60px 0;
+        }
+
+        span{
+            display: block;
+            font-size: 30px;
+        }
+    }
+}
