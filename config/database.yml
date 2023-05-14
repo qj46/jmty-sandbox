@@ -4,8 +4,8 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
   encoding: utf8 #変更
-  username: postgres
-  password: root
+  username: <%= ENV['DATABASE_USER'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
   host: localhost # 追加
 
 development:
@@ -22,4 +22,4 @@ test:
 production:
   <<: *default
   # database: db/production.sqlite3 変更
-  password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
