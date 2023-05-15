@@ -29,6 +29,15 @@
 }
 
 .top {
+    img {
+        width: initial;
+    }
+    .bnr {
+        width: 300px;
+        @include sp{
+            width: 100%;
+        }
+    }
     .l-inner {
         width: 1250px;
         display: flex;

@@ -42,11 +42,22 @@
         </div><!--top__left-->
 
         <div class="top__sidebar">
-            <a href="https://audiostock.jp/artists/52178" target="_blank" ><img src="https://audiostock.jp/assets/as_banner/banner_300_250_01.png" alt="AudiostockでBGM・効果音を販売中！" ></a>
+            <a href="https://audiostock.jp/artists/52178" target="_blank" ><img src="https://audiostock.jp/assets/as_banner/banner_300_250_04.png" class="bnr" alt="AudiostockでBGM・効果音を販売中！" ></a>
+            
             <br>
-            <img class="" src="https://placehold.jp/300x100.png" alt="製作依頼">
+            <%= link_to "https://kurataaudio.store/" do %>
+                <%= image_tag "sale-bnr.png", alt: "", class: "bnr" %>
+            <% end %>
+
             <br>
-            <img class="" src="https://placehold.jp/300x100.png" alt="ビートセイバー">
+            <%= link_to "https://kurataaudio.net/" do %>
+                <%= image_tag "production-bnr.png", alt: "", class: "bnr" %>
+            <% end %>
+            
+            <br>
+            <%= link_to "https://bit.ly/3MsLijJ" do %>
+                <%= image_tag "beatsaber-bnr.png", alt: "", class: "bnr" %>
+            <% end %>
         </div><!--top__right-->
 
     </div><!--l-inner-->
