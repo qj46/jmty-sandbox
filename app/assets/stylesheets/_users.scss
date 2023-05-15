@@ -35,6 +35,7 @@
     align-items: center;
     text-align: center;
     margin-top: 70px;
+    font-size: 30px;
 }
 
 .alert {
@@ -43,6 +44,11 @@
     margin-bottom: 1rem;
     border: 1px solid transparent;
     border-radius: 0.25rem;
+    margin-top: -50px;
+    @include sp(){
+        margin-top: 17vw;
+        margin-bottom: -20vw;
+    }
 }
 
 .alert-success {
@@ -104,7 +110,7 @@ table {
     color: #212529;
     vertical-align: top;
     border-color: #dee2e6;
-    margin-top: 80px;
+    margin-top: 30px;
 
     @include sp(){
         margin-top: initial;

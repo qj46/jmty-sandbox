@@ -1,12 +1,15 @@
-<div class="posts l-inner">
-  <% if @post.user.avatar.attached? %>
-      <%= image_tag(@post.user.avatar, class:"avatar") %>
-      <%= @post.user.username %>
-  <% else %>
-      <img class="avatar" src="https://placehold.jp/100x100.png" alt="">
+<main class="posts l-inner">
+  <%= link_to user_path(@post.user.id) do %>
+    <% if @post.user.avatar.attached? %>
+        <%= image_tag(@post.user.avatar, class:"avatar") %>
+        <%= @post.user.username %>
+    <% else %>
+        <%= image_tag "account.png", alt: "ロゴ", class: "avatar" %>
+    <% end %>
   <% end %>
+
   <br><br>
   <h1><%= @post.title %></h1>
   <br>
   <p><%= @post.body %></p>
-</div>
+</main>

@@ -22,6 +22,8 @@
 }
 
 .header {
+    background: #fff;
+    margin-bottom: 50px;
     @include sp(){
         position: fixed;
         top: 0;

@@ -88,3 +88,21 @@ input[type=submit] {
     background-color: #dc3545;
     border-color: #dc3545;
 }
+
+.fas {
+    color: #dc3545;
+}
+
+.logo {
+    width: 50%;
+    margin-top: -10px;
+    @include sp{
+        width: initial;
+        margin-top: initial;
+    }
+}
+
+.login, .logout {
+    position: relative;
+    right: -30px;
+}

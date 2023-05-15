@@ -29,7 +29,8 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 20px 30px;
+        padding: 10px 10px 0px 10px;
+        box-shadow: 0px 3px #eee;
 
         @include sp(){
             padding: 10px 15px;

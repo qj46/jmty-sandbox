@@ -29,8 +29,29 @@
 }
 
 .top {
+    .l-inner {
+        width: 1250px;
+        display: flex;
+        @include sp{
+            width: initial;
+            display: initial;
+        }
+    }
+    &__mainContents {
+        .title {
+            box-shadow: 0 3px #999;
+        }
+    }
+    &__sidebar {
+        margin-left: 75px;
+        @include sp{
+            margin-left: initial;
+            padding: 2vw;
+        }
+    }
     &__contents {
         @include sp{
+            padding: 1vw;
             overflow-x: scroll;
         }
     }

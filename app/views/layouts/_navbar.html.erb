@@ -1,7 +1,9 @@
 <header class="header">
     <div class="header__inner">
         <div class="header__logo">
-            <%= link_to "TOP", dashboard_path, class: "" %>
+            <%= link_to root_path do %>
+              <%= image_tag "logo.png", alt: "ロゴ", class: "logo" %>
+            <% end %>
         </div>
         <div class="header__left">
             <ul class="header__headNav headNav">
@@ -11,9 +13,9 @@
                 <li class="headNav__item"><%= link_to "外観", appearance_path, class: "" %></li>
                 <li class="headNav__item"><%= link_to "いいね一覧", lists_path, class: "" %></li>
                 <li class="headNav__item"><%= link_to "チャット", rooms_path, class: "" %></li>
-                <li class="headNav__item"><%= link_to "ログアウト", destroy_user_session_path, :method => :delete, class: "btn btn-danger" %></li>
+                <li class="headNav__item"><%= link_to "ログアウト", destroy_user_session_path, :method => :delete, class: "btn btn-danger logout" %></li>
               <% else %>
-                <li class="headNav__item"><%= link_to "ログイン", new_user_session_path, class: "btn btn-primary" %></li>
+                <li class="headNav__item"><%= link_to "ログイン", new_user_session_path, class: "btn btn-primary login" %></li>
               <% end %>
             </ul>
         </div>

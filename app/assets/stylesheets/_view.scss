@@ -48,6 +48,9 @@
             overflow-x: scroll;
         }
     }
+    @include sp{
+        margin-top: 20vw;
+    }
 
     th:first-child, td:first-child{
         width: 15%;
@@ -70,6 +73,18 @@
             width: initial !important;
         }
     }
+    .mycomment {
+        margin-bottom: 20px;
+
+        span {
+            background: #eee;
+            padding: 5px 20px;
+            border-radius: 50px;
+            position: relative;
+            top: 5px;
+        }
+    }
+
 }
 
 .admin {
@@ -101,7 +116,7 @@
     }
 
     @include sp{
-        margin-top: 15vw;
+        margin-top: 20vw;
     }
     &__content {
         padding: 3px 0;

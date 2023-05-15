@@ -1,4 +1,4 @@
-<div class="rooms l-inner">
+<main class="rooms l-inner">
     
     <h1><%= "#{@another_entry.user.username}さんとのメッセージ" %></h1>
 
@@ -6,28 +6,20 @@
     <% @messages.each do |m| %>
         <% if m.user_id == current_user.id %>
             <div class="mycomment">
-                <p><%= format_date m.user.created_at %> <%= m.user.username %>さん <%= m.body %></p>
+                <p><%= format_date m.user.created_at %> <%= m.user.username %>さん <span><%= m.body %></span></p>
             </div>
         <% else %>
-            <div class="fukidasi">
-                <div class="chatting">
-                    <div class="says">
-                        <p><%= format_date m.user.created_at %> <%= m.user.username %>さん <%= m.body %></p>
-                    </div>
-                </div>
+            <div class="mycomment">
+                <p><%= format_date m.user.created_at %> <%= m.user.username %>さん <span><%= m.body %></span></p>
             </div>
         <% end %>
     <% end %>
 
     <br>
-    <div class="chat-form-box">
-        <%= form_for @message do |f| %>
-            <div class="chat-form-group">
-                <%= f.text_field :body, :class=>"form-control" %>
-                <%= f.hidden_field :room_id, value: @room.id %>
-                <%= f.submit "送信する" %>
-            </div>
-        <% end %>
-    </div>
+    <%= form_for @message do |f| %>
+        <%= f.text_field :body, :class=>"form-control" %>
+        <%= f.hidden_field :room_id, value: @room.id %>
+        <%= f.submit "送信する" %>
+    <% end %>
         
-</div>
+</main>

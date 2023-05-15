@@ -1,11 +1,11 @@
-<div class="profile l-inner">
+<main class="profile l-inner">
     <div class="profile__contents">
         
         <div class="profile__content">
             <% if @user.avatar.attached? %>
                 <%= image_tag(@user.avatar, class:"avatar") %>
             <% else %>
-                <img class="avatar" src="https://placehold.jp/100x100.png" alt="">
+                <%= image_tag "account.png", alt: "ロゴ", class: "avatar" %>
             <% end %>
         </div>
         <div class="profile__content">
@@ -32,7 +32,7 @@
                             <%= fields_for @entry do |e| %>
                                 <%= e.hidden_field :user_id, value: @user.id %>
                             <% end %>
-                        <%= f.button type: :submit %>
+                        <%= f.button "DM", type: :submit %>
                         <% end %>
                     <% end %>
                 <% end %>
@@ -52,6 +52,6 @@
         </table>
     
     </div>
-</div>
+</main>
 
 

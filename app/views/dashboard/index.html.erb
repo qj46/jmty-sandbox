@@ -1,41 +1,53 @@
-<div class="top l-inner">
-    <div>
-        <img src="https://placehold.jp/1100x200.png" alt="">
-    </div>
+<main class="top">
+    <div class="l-inner">
 
-    <div class="top__contents">
-        <table>
-            <tbody>
-                <% @posts.each do |post| %>
-                    <tr>
-                        <td>
-                            <% if post.user.avatar.attached? %>
-                                <%= image_tag(post.user.avatar, class:"avatar") %>
-                            <% else %>
-                                <img class="avatar" src="https://placehold.jp/100x100.png" alt="">
-                            <% end %>
-                        </td>
-                        <!-- <td><%= link_to post.user.username, user_path(post.user.id), class: "" %></td> -->
-                        <td>
-                            <%= link_to truncate_text(post.title, 80), post, class: "nav-link" %>
-                            <%= link_to truncate_text(post.body, 80), post, class: "nav-link" %>
-                        </td>
-                        <td><%= format_date post.created_at %></td>
-                        <% if current_user %>
-                        <td>
-                            <% if current_user.likes.exists?(post_id: post.id) %>
-                                <i class="fas fa-heart"></i>
-                            <% else %>
-                                <%= link_to post_likes_path(post), method: :post do %>
-                                    <i class="far fa-heart"></i>
+        <div class="top__mainContents">
+            <div><%= image_tag "title.png", alt: "", class: "title pc-display" %></div>
+            <div class="top__contents">
+                <table>
+                    <tbody>
+                        <% @posts.each do |post| %>
+                            <tr>
+                                <td>
+                                    <%= link_to user_path(post.user.id) do %>
+                                        <% if post.user.avatar.attached? %>
+                                            <%= image_tag(post.user.avatar, class:"avatar") %>
+                                        <% else %>
+                                            <%= image_tag "account.png", alt: "ロゴ", class: "avatar" %>
+                                        <% end %>
+                                    <% end %>
+                                </td>
+                                <!-- <td><%= link_to post.user.username, user_path(post.user.id), class: "" %></td> -->
+                                <td>
+                                    <%= link_to truncate_text(post.title, 80), post, class: "nav-link" %>
+                                    <%= link_to truncate_text(post.body, 80), post, class: "nav-link" %>
+                                </td>
+                                <td><%= format_date post.created_at %></td>
+                                <% if current_user %>
+                                <td>
+                                    <% if current_user.likes.exists?(post_id: post.id) %>
+                                        <i class="fas fa-heart"></i>
+                                    <% else %>
+                                        <%= link_to post_likes_path(post), method: :post do %>
+                                            <i class="far fa-heart"></i>
+                                        <% end %>
+                                    <% end %>
+                                </td>
                                 <% end %>
-                            <% end %>
-                        </td>
+                            </tr>
                         <% end %>
-                    </tr>
-                <% end %>
-            </tbody>
-        </table>
-    </div>
+                    </tbody>
+                </table>
+            </div>
+        </div><!--top__left-->
 
-</div>
+        <div class="top__sidebar">
+            <a href="https://audiostock.jp/artists/52178" target="_blank" ><img src="https://audiostock.jp/assets/as_banner/banner_300_250_01.png" alt="AudiostockでBGM・効果音を販売中！" ></a>
+            <br>
+            <img class="" src="https://placehold.jp/300x100.png" alt="製作依頼">
+            <br>
+            <img class="" src="https://placehold.jp/300x100.png" alt="ビートセイバー">
+        </div><!--top__right-->
+
+    </div><!--l-inner-->
+</main>
