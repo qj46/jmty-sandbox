@@ -19,10 +19,10 @@
                                 </td>
                                 <!-- <td><%= link_to post.user.username, user_path(post.user.id), class: "" %></td> -->
                                 <td>
-                                    <%= link_to truncate_text(post.title, 80), post, class: "nav-link" %>
-                                    <%= link_to truncate_text(post.body, 80), post, class: "nav-link" %>
+                                    <div class="flex"><%= format_date post.created_at %> <%= link_to truncate_text(post.title, 10), post, class: "td-title" %></div>
+                                    <div><%= link_to truncate_text(post.body, 60), post, class: "pc-display" %><%= link_to truncate_text(post.body, 18), post, class: "sp-display" %></div>
                                 </td>
-                                <td><%= format_date post.created_at %></td>
+                                <!--<td><%= format_date post.created_at %></td>-->
                                 <% if current_user %>
                                 <td>
                                     <% if current_user.likes.exists?(post_id: post.id) %>

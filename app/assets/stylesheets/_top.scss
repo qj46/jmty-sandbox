@@ -26,6 +26,9 @@
     width: 5rem;
     height: 5rem;
     border-radius: 50%;
+    @include sp{
+        height: 3rem;
+    }
 }
 
 .top {
@@ -50,6 +53,12 @@
         .title {
             box-shadow: 0 3px #999;
         }
+        .td-title {
+            margin-left: 10px;
+        }
+        .flex {
+            display: flex;
+        }
     }
     &__sidebar {
         margin-left: 75px;
@@ -70,24 +79,21 @@
     }
     
     th:first-child, td:first-child{
-        width: 15%;
+        width: 10%;
         text-align: left;
         @include sp{
-            width: 25%;
+            width: 15%;
         }
     }
     td:nth-child(2){
-        width: 60%;
+        width: 90%;
         text-align: left;
         @include sp{
-            width: 50%;
+            width: 85%;
         }
     }
     td:nth-child(3){
-        width: 25%;
-        text-align: left;
-        @include sp{
-            width: 25%;
-        }
+        width: 0%;
+        text-align: right;
     }
 }
