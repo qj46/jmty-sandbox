@@ -54,7 +54,7 @@ RSpec.describe 'Users', type: :system do
         fill_in 'パスワード', with: 'password', exact: true #, match: :first
         fill_in '確認用パスワード', with: 'password2'
         click_button '登録'
-        #expect(page).to have_current_path '/users'
+        #expect(page).to have_current_path '/users' #不安な場合書く
         expect(page).to have_content '確認用パスワードとパスワードの入力が一致しません'
       end
     end
