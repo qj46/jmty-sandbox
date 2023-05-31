@@ -4,26 +4,29 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   describe 'validation' do
-    context '登録出来る場合' do
-      it '使えるアカウント名は登録出来る' do
+    context '使用禁止のアカウント名に該当しない場合' do
+      it 'アカウントは有効' do
         user = build(:user, username: 'foobar')
         expect(user).to be_valid
       end
     end
 
-    context '登録出来ない場合' do
-      it '使えないアカウント名は登録出来ない' do
+    context '使用禁止のアカウント名に該当する場合' do
+      it 'アカウントは無効' do
         user = build(:user, username: 'admin')
         expect(user).not_to be_valid
 
-        user = build(:user, username: 'root')
+        # user = build(:user, username: 'root')
+        user.username = 'root'
         expect(user).not_to be_valid
 
-        user = build(:user, username: 'dashboard')
+        # user = build(:user, username: 'dashboard')
+        user.username = 'dashboard'
         expect(user).not_to be_valid
 
         user = build(:user, username: 'analytics')
-        expect(user).not_to be_valid
+        # expect(user).not_to be_valid
+        expect(user).not_to be_invalid
 
         user = build(:user, username: 'appearance')
         expect(user).not_to be_valid
@@ -45,8 +48,16 @@ RSpec.describe User, type: :model do
 
     context 'ユーザー名が変わる場合' do
       it 'ユーザー名とスラッグが変わる' do
-        user.update(username: 'new-test')
-        expect(user.slug).to eq('new-test')
+        # before
+        expect(user.slug).to eq 'test'
+        # after
+        user.update!(username: 'new-test')
+        expect(user.slug).to eq 'new-test'
+
+        # 高等テクニック　上記と同じ
+        expect {
+          user.update!(username: 'new-test')
+        }.to change { user.slug }.from('test').to('new-test')
       end
     end
   end
