@@ -81,6 +81,8 @@ group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'webdrivers'
+  gem 'rspec-rails'
+  gem 'simplecov'
 end
 
 gem 'devise', '~> 4.9'
