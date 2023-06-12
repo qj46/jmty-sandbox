@@ -21,14 +21,16 @@ class DashboardController < ApplicationController
 
     # MEMO 以下全てDM機能
     return unless current_user # MEMO ログインしていない場合、処理を終了
-    result = User.find_common_room(current_user.entries, @user.entries) #MEMO クラスメソッド
-    is_room = result[:is_room]
-    room_id = result[:room_id]
+
+    result = User.find_common_room(current_user.entries, @user.entries) # MEMO クラスメソッド
+    result[:is_room]
+    result[:room_id]
 
     return if @is_room # MEMO 既にroomがある場合、処理を終了
+
     @room = Room.new # MEMO dashboard/show.html.erb の <%= form_for @room do |f| %>でインスタンス変数使用
     @entry = Entry.new # MEMO dashboard/show.html.erb の <%= fields_for @entry do |e| %>でインスタンス変数使用
-                       # MEMO RoomsController の another_entry = Entry.create(user_id: params[:entry][:user_id], room_id: room.id)に渡す
+    # MEMO RoomsController の another_entry = Entry.create(user_id: params[:entry][:user_id], room_id: room.id)に渡す
   end
 
   private

@@ -19,7 +19,7 @@ class User < ApplicationRecord
   validates :full_name, length: { maximum: 50 }
   validates :body, length: { maximum: 80 }
   validate :valid_username
-  
+
   def valid_username
     # errors.add(:username, "is already taken") if User.exists?(username: username)
     restricted_username_list = %(admin root dashboard analytics appearance settings preferences calendar)
@@ -39,14 +39,14 @@ class User < ApplicationRecord
 
     current_entry.each do |current|
       another_entry.each do |another|
-        if current.room_id == another.room_id
-          is_room = true # MEMO dashboard/show.html.erb の <% if @is_room %>でインスタンス変数使用
-          room_id = current.room_id # MEMO dashboard/show.html.erb の <%= link_to 'DM', room_path(@room_id) %>でインスタンス変数使用
-          break
-        end
+        next unless current.room_id == another.room_id
+
+        is_room = true # MEMO dashboard/show.html.erb の <% if @is_room %>でインスタンス変数使用
+        room_id = current.room_id # MEMO dashboard/show.html.erb の <%= link_to 'DM', room_path(@room_id) %>でインスタンス変数使用
+        break
       end
     end
 
-    { is_room: is_room, room_id: room_id }
+    { is_room:, room_id: }
   end
 end

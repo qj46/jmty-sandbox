@@ -24,10 +24,10 @@ class RoomsController < ApplicationController
 
     @room = Room.find(params[:id])
     @messages = @room.messages.all.order(created_at: :desc)
-    
+
     entries = @room.entries
     @another_entry = entries.find { |entry| entry.user_id != current_user.id } # MEMO 別のエントリーユーザー
-    
+
     @message = Message.new
   end
 end

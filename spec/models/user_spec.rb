@@ -55,9 +55,9 @@ RSpec.describe User, type: :model do
         expect(user.slug).to eq 'new-test'
 
         # 高等テクニック　上記と同じ
-        expect {
+        expect do
           user.update!(username: 'new-test')
-        }.to change { user.slug }.from('test').to('new-test')
+        end.to change { user.slug }.from('test').to('new-test')
       end
     end
   end
