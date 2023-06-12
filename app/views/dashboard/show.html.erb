@@ -1,6 +1,6 @@
 <main class="profile l-inner">
     <div class="profile__contents">
-        
+
         <div class="profile__content">
             <% if @user.avatar.attached? %>
                 <%= image_tag(@user.avatar, class:"avatar") %>
@@ -8,22 +8,16 @@
                 <%= image_tag "account.png", alt: "ロゴ", class: "avatar" %>
             <% end %>
         </div>
-        <div class="profile__content">
-            <h2><%= truncate_text(@user.full_name, 80) if @user.full_name %></h2>
-        </div>
-        <div class="profile__content">
-            <p><%= truncate_text(@user.body, 80) if @user.body %></p>
-        </div>
+        <div class="profile__content"><h2><%= truncate_text(@user.full_name, 80) if @user.full_name %></h2></div>
+        <div class="profile__content"><p><%= truncate_text(@user.body, 80) if @user.body %></p></div>
         <div class="profile__content flex">
-        <!-- twitter -->    
-            <div class="profile__contentItem">
-                <%= link_to "Twitter", "https://twitter.com/" + @user.username %>
-            </div>
-        <!-- DM -->
-        <% if current_user %>
+            <!-- twitter -->
+            <div class="profile__contentItem"><%= link_to "Twitter", "https://twitter.com/" + @user.username %></div>
+            <!-- DM -->
+            <% if current_user %>
             <div class="profile__contentItem">
                 <% unless @user.id == current_user.id %>
-                    <% if @is_room == true %>
+                    <% if @is_room %>
                     <!-- 新規 -->
                         <%= link_to 'DM', room_path(@room_id) %>
                     <% else %>
@@ -37,17 +31,17 @@
                     <% end %>
                 <% end %>
             </div>
-        <% end %>
+            <% end %>
         </div>
         
         <table>
             <tbody>
-            <% @user.posts.each do |post| %>
-            <tr>
-                <td><%= format_date post.created_at %></td>
-                <td><%= link_to truncate_text(post.title, 80), post, class: "" if post.title %></td>
-            </tr>
-            <% end %>
+                <% @user.posts.each do |post| %>
+                <tr>
+                    <td><%= format_date post.created_at %></td>
+                    <td><%= link_to truncate_text(post.title, 80), post, class: "" if post.title %></td>
+                </tr>
+                <% end %>
             </tbody>
         </table>
     
