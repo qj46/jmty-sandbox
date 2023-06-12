@@ -21,19 +21,9 @@ class DashboardController < ApplicationController
 
     # MEMO 以下全てDM機能
     return unless current_user # MEMO ログインしていない場合、処理を終了
-
-    current_entry = current_user.entries
-    another_entry = @user.entries
-    return if @user.id == current_user.id
-
-    current_entry.each do |current|
-      another_entry.each do |another|
-        if current.room_id == another.room_id
-          @is_room = true # MEMO dashboard/show.html.erb の <% if @is_room %>でインスタンス変数使用
-          @room_id = current.room_id # MEMO dashboard/show.html.erb の <%= link_to 'DM', room_path(@room_id) %>でインスタンス変数使用
-        end
-      end
-    end
+    result = User.find_common_room(current_user.entries, @user.entries) #MEMO クラスメソッド
+    is_room = result[:is_room]
+    room_id = result[:room_id]
 
     return if @is_room # MEMO 既にroomがある場合、処理を終了
     @room = Room.new # MEMO dashboard/show.html.erb の <%= form_for @room do |f| %>でインスタンス変数使用
@@ -46,7 +36,7 @@ class DashboardController < ApplicationController
   def set_user
     @user = User.friendly.find(params[:id])
     # @user = User.find_by_id(params[:id])
-    # @posts = Post.where(params[:id])
+    # @posts = Post.where(params[:id]) # MEMO 脆弱性
   rescue StandardError
     @user = nil
   end

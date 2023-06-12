@@ -18,10 +18,10 @@
             <div class="profile__contentItem">
                 <% unless @user.id == current_user.id %>
                     <% if @is_room %>
-                    <!-- 新規 -->
+                    <!-- MEMO 新規のやり取り -->
                         <%= link_to 'DM', room_path(@room_id) %>
                     <% else %>
-                    <!-- 過去 -->
+                    <!-- MEMO 過去のやり取り -->
                         <%= form_for @room do |f| %>
                             <%= fields_for @entry do |e| %>
                                 <%= e.hidden_field :user_id, value: @user.id %>
