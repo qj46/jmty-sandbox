@@ -39,7 +39,7 @@ class DashboardController < ApplicationController
     @user = User.friendly.find(params[:id])
     # @user = User.find_by_id(params[:id])
     # @posts = Post.where(params[:id]) # MEMO 脆弱性
-  # rescue StandardError
-  #   @user = nil
+    # rescue StandardError
+    #   @user = nil
   end
 end

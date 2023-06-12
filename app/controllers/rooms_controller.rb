@@ -13,6 +13,7 @@ class RoomsController < ApplicationController
     room = Room.create
     current_entry = Entry.create(user_id: current_user.id, room_id: room.id)
     another_entry = Entry.create(user_id: params[:entry][:user_id], room_id: room.id)
+
     redirect_to room_path(room), notice: 'チャットルームを作成しました'
   end
 
@@ -25,8 +26,7 @@ class RoomsController < ApplicationController
     @room = Room.find(params[:id])
     @messages = @room.messages.all.order(created_at: :desc)
 
-    entries = @room.entries
-    @another_entry = entries.find { |entry| entry.user_id != current_user.id } # MEMO 別のエントリーユーザー
+    @another_entry = Entry.find_another_entry(@room, current_user.id) # MEMO ログインユーザー以外の別のエントリーユーザー取得
 
     @message = Message.new
   end
