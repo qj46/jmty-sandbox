@@ -26,7 +26,7 @@ class RoomsController < ApplicationController
     @room = Room.find(params[:id])
     @messages = @room.messages.all.order(created_at: :desc)
 
-    @another_entry = Entry.find_another_entry(@room, current_user.id) # MEMO ログインユーザー以外の別のエントリーユーザー取得
+    @another_entry = Entry.find_another_entry_user(@room, current_user.id) # MEMO ログインユーザー以外の別のエントリーユーザー取得
 
     @message = Message.new
   end
