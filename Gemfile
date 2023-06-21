@@ -91,7 +91,7 @@ gem 'simple_form', '~> 5.2'
 
 gem 'friendly_id', '~> 5.5'
 
-gem 'dartsass-rails', '~> 0.4.1'
+# gem 'dartsass-rails', '~> 0.4.1'
 
 gem 'sassc-rails'
 
